@@ -2,9 +2,25 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 
-const names = ['home', 'about', 'brazil', 'hawaii', 'jamaica', 'panama']
+const names = [
+  'home',
+  'about',
+  'brazil',
+  'hawaii',
+  'jamaica',
+  'panama',
+  'users',
+]
 
-const paths = ['/', '/about', '/brazil', '/hawaii', '/jamaica', '/panama']
+const paths = [
+  '/',
+  '/about',
+  '/brazil',
+  '/hawaii',
+  '/jamaica',
+  '/panama',
+  '/users/1',
+]
 </script>
 
 <template>
@@ -23,7 +39,13 @@ const paths = ['/', '/about', '/brazil', '/hawaii', '/jamaica', '/panama']
     </div>
   </header>
 
-  <RouterView />
+  <!-- <RouterView /> -->
+  <router-view v-slot="{ Component, route }">
+    <!-- Use a custom transition or fallback to `fade` -->
+    <transition :name="route.meta.transition || 'fade'">
+      <component :is="Component" />
+    </transition>
+  </router-view>
 </template>
 
 <style scoped>

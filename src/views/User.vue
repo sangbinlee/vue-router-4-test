@@ -1,0 +1,21 @@
+<template>
+  <div class="about">
+    <h1>This is an user page</h1>
+    <p>User {{ this.$route.params.id }}</p>
+    <div>User {{ id }}</div>
+  </div>
+</template>
+<script setup>
+defineProps({
+  id: String,
+})
+</script>
+<style>
+@media (min-width: 1024px) {
+  .about {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+}
+</style>
