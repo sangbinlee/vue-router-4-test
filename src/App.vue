@@ -21,6 +21,11 @@ const paths = [
   '/panama',
   '/users/1',
 ]
+
+function onTransitionComplete() {
+  // alert(1)
+  console.log(111)
+}
 </script>
 
 <template>
@@ -42,13 +47,32 @@ const paths = [
   <!-- <RouterView /> -->
   <router-view v-slot="{ Component, route }">
     <!-- Use a custom transition or fallback to `fade` -->
-    <transition :name="route.meta.transition || 'fade'">
+    <!-- <transition :name="route.meta.transition || 'fade'" mode="out-in"> -->
+    <transition
+      :name="route.meta.transition || 'fade'"
+      mode="in-out"
+      @after-enter="onTransitionComplete"
+    >
       <component :is="Component" />
     </transition>
   </router-view>
 </template>
 
 <style scoped>
+/* .slide-left-enter,
+.slide-right-leave-to {
+  transform: translate3d(-100vw, 0, 0);
+}
+
+.slide-right-enter,
+.slide-left-leave-to {
+  transform: translate3d(100vw, 0, 0);
+} */
+
+.about {
+  position: absolute;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;
