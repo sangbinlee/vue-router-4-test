@@ -70,7 +70,7 @@ function onTransitionComplete() {
 } */
 
 .about {
-  position: absolute;
+  //position: absolute;
 }
 
 header {

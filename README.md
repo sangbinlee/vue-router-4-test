@@ -43,3 +43,6 @@ npm run build
 
 
 ### npm install -D sass
+### yarn add @vuepic/vue-datepicker
+
+
