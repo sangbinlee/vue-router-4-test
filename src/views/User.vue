@@ -9,14 +9,18 @@
       v-model="date"
       :format-locale="ko"
       format="yyyy-MM-dd"
-      range multi-calendars="2"
+      range
+      multi-calendars="2"
     ></VueDatePicker>
 
-    <VueDatePicker v-model="date"
-                   :format-locale="ko"
-                   format="yyyy-MM-dd"
-                   range
-                   multi-calendars="3" />
+    <VueDatePicker
+      v-model="date"
+      :format-locale="ko"
+      format="yyyy-MM-dd"
+      range
+      multi-calendars="3"
+      @mouseover="mouseOver($event)"
+    />
   </div>
 </template>
 <script setup>
@@ -25,6 +29,10 @@ import { ko } from 'date-fns/locale'
 defineProps({
   id: String,
 })
+
+function mouseOver(e) {
+  console.log('e', e)
+}
 
 const date = ref()
 
