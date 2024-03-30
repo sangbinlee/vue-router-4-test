@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <h1>This is an user page</h1>
-    <p>User {{ this.$route.params.id }}</p>
+    <p>User {{ $route.params.id }}</p>
     <div>User {{ id }}</div>
   </div>
 </template>

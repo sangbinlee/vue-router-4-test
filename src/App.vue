@@ -42,7 +42,7 @@ const paths = [
   <!-- <RouterView /> -->
   <router-view v-slot="{ Component, route }">
     <!-- Use a custom transition or fallback to `fade` -->
-    <transition :name="route.meta.transition || 'fade'">
+    <transition :name="route.meta.transition || 'fade'" mode="in-out" >
       <component :is="Component" />
     </transition>
   </router-view>
