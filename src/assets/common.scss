@@ -1,0 +1,56 @@
+@charset "utf-8";
+/********** transition **********/
+@mixin transition-defalut ($property: transform, $delay: 0.2s, $duration: 0.5s, $timing-function: ease) {
+  transition-property: $property;
+  transition-duration: $duration;
+  transition-timing-function: $timing-function;
+  transition-delay: $delay;
+  position: absolute !important; // 애니메이션 이동시 다음 화면이 아래에 내려가 있는 경우를 없에기 위해 추가됨
+}
+
+$transition-name: 'slide-left', 'slide-right', 'page-slide-right', 'slide-up';
+$property: transform;
+$delay: 0.2s;
+$duration: 0.4s;
+$timing-function: ease;
+
+@each $tname in $transition-name {
+  .#{$tname}-enter-active, .#{$tname}-leave-active {
+    @include transition-defalut($property, $delay, $duration, $timing-function);
+  }
+}
+.footer-slide-up-enter-active, .footer-slide-up-leave-active {
+  @include transition-defalut($property, 0.2s, 0.4s, ease);
+}
+
+.slide-left-enter, .slide-right-leave-to {
+  transform: translate3d(-100vw, 0, 0);
+}
+
+.slide-right-enter, .slide-left-leave-to {
+  transform: translate3d(100vw, 0, 0);
+}
+
+/* page-slide-right */
+.page-slide-right-enter, .page-slide-right-leave-to {
+  transform: translate3d(100vw, 0, 0);
+}
+.page-slide-left-enter, .page-slide-right-leave-to {
+  transform: translate3d(-100vw, 0, 0);
+}
+
+/* slide-up */
+.slide-up-enter, .slide-up-leave-to, .footer-slide-up-enter, .footer-slide-up-leave-to {
+  transform: translate3d(0, 100%, 0);
+}
+
+//.fade-enter-active, .fade-leave-active {
+//  //transition: opacity 0.2s ease-in;
+//  @include transition-defalut(opacity, 0s, 0.2s, ease-in);
+//  opacity: 1 !important;
+//}
+//.fade-enter, .fade-leave-to {
+//  //transition: opacity 0.2s ease-out;
+//  @include transition-defalut(opacity, 0s, 0.2s, ease-out);
+//  opacity: 0 !important;
+//}

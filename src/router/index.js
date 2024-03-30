@@ -22,11 +22,14 @@ names.forEach((nation, index) => {
     path: paths[index],
     name: names[index],
     component: () => import(`@/views/${component}.vue`),
-    meta: { transition: 'slide-left' },
+    // meta: { transition: 'slide-left' },
+    // meta: { transition: 'slide-right' },
+    meta: { transition: 'page-slide-right' },
   }
   routes.push(route)
 })
 // routes.push({ path: '/users/:id', component: User })
+routes.push({ path: '/users/:id', component: User, props: true })
 routes.push({ path: '/users/:id', component: User, props: true })
 console.log(`routes=${routes}`, routes)
 
@@ -57,7 +60,9 @@ router.afterEach((to, from) => {
   console.log('to.path', to.path)
   console.log('toDepth', toDepth)
 
-  to.meta.transition = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+  // to.meta.transition = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+  to.meta.transition =
+    toDepth < fromDepth ? 'page-slide-right' : 'page-slide-left'
   console.log('to.meta.transition', to.meta.transition)
 })
 

@@ -40,3 +40,9 @@ npm run build
 
 
 ### vue-router-4-test# vue-router-4-test
+
+
+### npm install -D sass
+### yarn add @vuepic/vue-datepicker
+
+
